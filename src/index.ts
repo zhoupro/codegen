@@ -10,13 +10,15 @@ const {Parser} = node_sql_parser
 
 async function logTables() {
     const tables = await inspector.tables();
+    const columns = await inspector.columnInfo("Admin")
     console.log("here",tables);
+    console.log("there", columns);
 }
 await logTables()
 
 const parser = new Parser();
 
-const ast:any = parser.astify('SELECT * FROM t where a = "#aa" and b = "#bb" or c  > 3 and d in (1,2,3,4)'); // mysql sql grammer parsed by default
+const ast:any = parser.astify('SELECT * FROM Admin where pass = "#aa"  and id in (1,2,3,4)'); // mysql sql grammer parsed by default
 getWhereInputNode(ast?.where)
 
 let people = ['geddy', 'neil', 'alex']
