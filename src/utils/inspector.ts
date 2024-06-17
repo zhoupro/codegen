@@ -1,10 +1,9 @@
 import Knex from 'knex';
 
-import { default as schemaInspectorImport } from "knex-schema-inspector";
-const schemaInspector = schemaInspectorImport?.default;
+import { SchemaInspector} from "knex-schema-inspector"
 
 
-const database = Knex({
+export const database = Knex({
   client: 'mysql2',
   connection: {
     host: '127.0.0.1',
@@ -15,6 +14,6 @@ const database = Knex({
   },
 });
 
-const inspector = schemaInspector(database);
+const inspector = SchemaInspector(database);
 
 export default inspector;
